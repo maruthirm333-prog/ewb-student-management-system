@@ -1,0 +1,77 @@
+### API home
+GET http://127.0.0.1:8000/
+
+### Health
+GET http://127.0.0.1:8000/health
+
+### Create a student (use dummy data)
+POST http://127.0.0.1:8000/students
+Content-Type: application/json
+
+{
+  "name": "Asha Kumar",
+  "date_of_birth": "2005-04-12",
+  "email": "asha@example.com",
+  "phone": "9000000001",
+  "course": "ECE",
+  "address": "Hassan, Karnataka",
+  "enrollment_date": "2024-08-01"
+}
+
+### Create another student
+POST http://127.0.0.1:8000/students
+Content-Type: application/json
+
+{
+  "name": "Ravi Shetty",
+  "date_of_birth": "2006-09-24",
+  "phone": "9000000002",
+  "course": "CSE"
+}
+
+### List students
+GET http://127.0.0.1:8000/students
+
+### Filter by name/course
+GET http://127.0.0.1:8000/students?name=asha
+GET http://127.0.0.1:8000/students?course=ECE
+
+### Find students born after 2005
+GET http://127.0.0.1:8000/students?born_after_year=2005
+
+### Get student ID 1
+GET http://127.0.0.1:8000/students/1
+
+### Partially update student ID 1
+PATCH http://127.0.0.1:8000/students/1
+Content-Type: application/json
+
+{
+  "phone": "9111111111",
+  "address": "Bengaluru, Karnataka"
+}
+
+### Replace all details for student ID 1 (send required fields)
+PUT http://127.0.0.1:8000/students/1
+Content-Type: application/json
+
+{
+  "name": "Asha Kumar",
+  "date_of_birth": "2005-04-12",
+  "email": "asha.updated@example.com",
+  "phone": "9111111111",
+  "course": "ECE",
+  "address": "Bengaluru, Karnataka",
+  "enrollment_date": "2024-08-01"
+}
+
+### Ask the optional local AI (requires Ollama running and model installed)
+POST http://127.0.0.1:8000/students/ask
+Content-Type: application/json
+
+{
+  "question": "How many students are there?"
+}
+
+### Delete student ID 1
+DELETE http://127.0.0.1:8000/students/1
